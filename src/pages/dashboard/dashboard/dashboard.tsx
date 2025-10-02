@@ -36,16 +36,16 @@ const Dashboard = () => {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-xl md:text-3xl font-bold">
           {RandomGreeting()}, {admin?.name}
         </h1>
         <p className="text-muted-foreground text-sm mt-2">
           Berikut adalah ringkasan data Kopi Kita
         </p>
       </div>
-      <div className="mt-18">
-        <h2 className="text-2xl font-semibold mt-4 mb-2">Ringkasan Data</h2>
-        <div className="grid grid-cols-4 gap-4">
+      <div className="mt-6 md:mt-18">
+        <h2 className="text-lg md:text-2xl font-semibold mt-4 mb-2">Ringkasan Data</h2>
+        <div className="grid md:grid-cols-4 gap-4">
           <Card className="bg-green-100">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Total Produk</CardTitle>
@@ -72,8 +72,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="mt-12">
-        <h2 className="text-2xl font-semibold mt-4 mb-2">Produk Terbaru</h2>
+      <div className="mt-6 md:mt-12">
+        <h2 className="text-lg md:text-2xl font-semibold mt-4 mb-2">Produk Terbaru</h2>
         <DataTable columns={columns} data={summary?.newestProduct || []} />
       </div>
     </>

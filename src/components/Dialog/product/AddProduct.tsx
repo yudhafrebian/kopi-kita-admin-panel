@@ -22,7 +22,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "../../ui/select";
 
 export type ProductForm = {
   name: string;
@@ -39,6 +39,7 @@ const AddProductDialog = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm<ProductForm>();
 
@@ -57,11 +58,7 @@ const AddProductDialog = () => {
 
       const response = await postProduct(formData);
       toast.success(response?.data?.message);
-      
-      for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
-      
+      reset();
     } catch (error) {
       console.log(error);
     } finally {
@@ -84,7 +81,7 @@ const AddProductDialog = () => {
 
   useEffect(() => {
     register("category_id", { required: "Kategori harus dipilih" });
-  }, [register])
+  }, [register]);
 
   return (
     <Dialog>
@@ -186,7 +183,11 @@ const AddProductDialog = () => {
                   })
                 }
               >
-                <SelectTrigger className={errors.category_id ? "border-red-500 w-full" : "w-full"}>
+                <SelectTrigger
+                  className={
+                    errors.category_id ? "border-red-500 w-full" : "w-full"
+                  }
+                >
                   <SelectValue placeholder="Pilih Kategori" />
                 </SelectTrigger>
                 <SelectContent>

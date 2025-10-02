@@ -23,9 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import AddCategoryDialog from "@/components/Dialog/AddCategory";
-import AddProductDialog from "@/components/Dialog/AddProduct";
-
+import AddProductDialog from "@/components/Dialog/product/AddProduct";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -56,7 +54,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       <div>
-        <div className="flex items-center py-4">
+        <div className="flex flex-col md:flex-row gap-4 md:items-center py-4">
           <Input
             placeholder="Filter Kategori..."
             value={
@@ -67,10 +65,6 @@ export function DataTable<TData, TValue>({
             }
             className="max-w-sm"
           />
-        </div>
-
-        <div>
-          <AddCategoryDialog />
           <AddProductDialog />
         </div>
       </div>

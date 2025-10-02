@@ -8,6 +8,7 @@ const ProductPage = () => {
   const getProduct = async () => {
     try {
       const getData = await fetchProduct();
+      console.log("Fetched:", getData?.data?.data);
       setData(getData?.data.data);
     } catch (error) {
       console.log(error);
@@ -21,7 +22,7 @@ const ProductPage = () => {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-xl md:text-3xl font-bold">
           Manajemen Produk
         </h1>
         <p className="text-muted-foreground text-sm mt-2">
@@ -30,7 +31,7 @@ const ProductPage = () => {
       </div>
 
       <div>
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns(getProduct)} data={data} />
       </div>
     </>
   );

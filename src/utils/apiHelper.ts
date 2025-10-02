@@ -63,24 +63,63 @@ export const fetchProduct = async () => {
   }
 };
 
-export const postProduct = async (data: any) => {
+export const fetchDetailProduct = async (id: string) => {
   try {
     const token = window.localStorage.getItem("token");
-    const response = await apiBase.post(
-      "/products/create",
-      data ,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const response = await apiBase.get(`/products/all/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response;
   } catch (error) {
     console.log(error);
   }
 };
+
+export const postProduct = async (data: any) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.post("/products/create", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateProduct = async (id: string, data: any) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.patch(`/products/update/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteProduct = async (id: string) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.patch(`/products/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const fetchCategory = async () => {
   try {
@@ -94,7 +133,7 @@ export const fetchCategory = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 export const postCategory = async (name: string) => {
   try {

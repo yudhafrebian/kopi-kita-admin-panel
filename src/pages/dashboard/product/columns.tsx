@@ -1,3 +1,5 @@
+import DeleteProductDialog from "@/components/Dialog/product/DeleteProduct";
+import EditProductDialog from "@/components/Dialog/product/EditProduct";
 import { Button } from "@/components/ui/button";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
@@ -21,7 +23,7 @@ export type Product = {
   };
 };
 
-export const columns: ColumnDef<Product>[] = [
+export const columns= (refetch: () => void): ColumnDef<Product>[] => [
   {
     accessorKey: "name",
     header: ({column }) => {
@@ -82,8 +84,8 @@ export const columns: ColumnDef<Product>[] = [
     header: "Aksi",
     cell: ({ row }) => (
       <div className="flex gap-2">
-        <Button size={"sm"}>Edit</Button>
-        <Button variant={"destructive"} size={"sm"}>Hapus</Button>
+        <EditProductDialog id={row.original.id.toString()} onSuccess={refetch} />
+        <DeleteProductDialog id={row.original.id.toString()} onSuccess={refetch} />
       </div>
     ),
   }

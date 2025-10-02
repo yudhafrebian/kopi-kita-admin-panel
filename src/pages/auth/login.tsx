@@ -39,7 +39,7 @@ const Login = () => {
         <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 w-96"
+          className="flex flex-col gap-4 md:w-96"
         >
           <div className="flex flex-col gap-2">
             <Label htmlFor="email">Email</Label>
