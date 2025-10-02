@@ -135,6 +135,20 @@ export const fetchCategory = async () => {
   }
 };
 
+export const fetchCategoryDetail = async (id: string) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.get(`/categories/all/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const postCategory = async (name: string) => {
   try {
     const token = window.localStorage.getItem("token");
@@ -152,3 +166,38 @@ export const postCategory = async (name: string) => {
     console.log(error);
   }
 };
+
+export const updateCategory = async (id: string, name: string) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.patch(
+      `/categories/update/${id}`,
+      { name },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteCategory = async (id: string) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.patch(
+      `/categories/delete/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}

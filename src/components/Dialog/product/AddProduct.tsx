@@ -32,9 +32,14 @@ export type ProductForm = {
   category_id: number;
 };
 
-const AddProductDialog = () => {
+type AddProductDialogProps = {
+  onSuccess?: () => void;
+};
+
+const AddProductDialog = ({onSuccess}: AddProductDialogProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<any[]>([]);
+  const [open, setOpen] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -59,6 +64,10 @@ const AddProductDialog = () => {
       const response = await postProduct(formData);
       toast.success(response?.data?.message);
       reset();
+      setOpen(false);
+      if(onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -84,7 +93,7 @@ const AddProductDialog = () => {
   }, [register]);
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">Tambah Produk</Button>
       </DialogTrigger>

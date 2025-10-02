@@ -49,17 +49,18 @@ const AddCategoryDialog = () => {
           <DialogTitle>Tambah Kategori</DialogTitle>
           <DialogDescription>Masukkan kategori baru</DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div>
-            <Label htmlFor="category">Kategori</Label>
+            <Label htmlFor="category" className="mb-2">Nama Kategori</Label>
             <Input
               type="text"
               id="category"
               {...register("category", {
                 required: "Nama Kategori harus diisi",
               })}
+              className={errors.category ? "border-red-500" : ""}
             />
-            {errors.category && <p>{errors.category.message}</p>}
+            {errors.category && <p className="text-red-500 text-xs">{errors.category.message}</p>}
           </div>
           {loading ? (
             <Button type="submit" disabled>

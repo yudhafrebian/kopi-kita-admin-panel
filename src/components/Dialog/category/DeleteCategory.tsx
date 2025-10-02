@@ -7,23 +7,23 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { deleteProduct } from "@/utils/apiHelper";
+import { deleteCategory } from "@/utils/apiHelper";
 import { useState } from "react";
 import { toast } from "sonner";
 
-interface IDeleteProductDialogProps {
+interface IDeleteCategoryDialogProps {
   id: string;
   onSuccess: () => void;
 }
 
-const DeleteProductDialog: React.FunctionComponent<
-  IDeleteProductDialogProps
+const DeleteCategoryDialog: React.FunctionComponent<
+  IDeleteCategoryDialogProps
 > = (props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const deleteItem = async () => {
     try {
-      const response = await deleteProduct(props.id);
+      const response = await deleteCategory(props.id);
       console.log(response);
       setOpen(false);
       toast.success(response?.data?.message);
@@ -44,9 +44,9 @@ const DeleteProductDialog: React.FunctionComponent<
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Hapus Produk</DialogTitle>
+          <DialogTitle>Hapus Kategori</DialogTitle>
           <DialogDescription className="text-left">
-            Apakah anda yakin ingin menghapus produk ini?
+            Apakah anda yakin ingin menghapus kategori ini?
           </DialogDescription>
         </DialogHeader>
         <div className="flex gap-2 justify-end">
@@ -62,4 +62,4 @@ const DeleteProductDialog: React.FunctionComponent<
   );
 };
 
-export default DeleteProductDialog;
+export default DeleteCategoryDialog;

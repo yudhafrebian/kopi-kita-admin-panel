@@ -1,4 +1,4 @@
-import { Gauge, Package } from "lucide-react"
+import { Component, Gauge, Package } from "lucide-react"
 import { useLocation } from "react-router-dom"
 import {
   Sidebar,
@@ -18,6 +18,11 @@ const items = [
     title: "Dahsboard",
     url: "/dashboard",
     icon: Gauge,
+  },
+  {
+    title: "Manajemen Kategori",
+    url: "/dashboard/category",
+    icon: Component,
   },
   {
     title: "Manajemen Produk",
