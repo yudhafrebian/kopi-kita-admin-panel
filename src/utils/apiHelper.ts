@@ -48,3 +48,68 @@ export const fetchSummary = async () => {
     console.log(error);
   }
 };
+
+export const fetchProduct = async () => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.get("/products/all", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const postProduct = async (data: any) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.post(
+      "/products/create",
+      data ,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCategory = async () => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.get("/categories/all", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const postCategory = async (name: string) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await apiBase.post(
+      "/categories/create",
+      { name },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -46,20 +46,24 @@ const Dashboard = () => {
       <div className="mt-18">
         <h2 className="text-2xl font-semibold mt-4 mb-2">Ringkasan Data</h2>
         <div className="grid grid-cols-4 gap-4">
-          <Card>
+          <Card className="bg-green-100">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Total Produk</CardTitle>
-              <Box className="text-muted-foreground" />
+              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                <Box className="text-white" />
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{summary.totalProduct}</div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-purple-100">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Total Kategori</CardTitle>
-              <Component className="text-muted-foreground" />
+              <div className="w-10 h-10 bg-[#BF83FF] rounded-full flex items-center justify-center">
+                <Component className="text-white" />
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{summary.totalCategory}</div>

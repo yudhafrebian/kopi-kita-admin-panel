@@ -13,7 +13,7 @@ type LoginFormInput = {
 };
 
 const Login = () => {
-const {setAdmin} = useAuth();
+  const { setAdmin } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -23,17 +23,15 @@ const {setAdmin} = useAuth();
 
   const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
     try {
-        const response = await login(data.email, data.password);
-        if(response?.data){
-            setAdmin({
-                name: response.data.data.name,
-                email: response.data.data.email
-            })
-        }
-        navigate("/dashboard");
-    } catch (error) {
-        
-    }
+      const response = await login(data.email, data.password);
+      if (response?.data) {
+        setAdmin({
+          name: response.data.data.name,
+          email: response.data.data.email,
+        });
+      }
+      navigate("/dashboard");
+    } catch (error) {}
   };
   return (
     <div className="h-screen flex justify-center items-center">
@@ -75,7 +73,9 @@ const {setAdmin} = useAuth();
             </div>
           </div>
           <div className="mx-auto">
-            <Button type="submit" size={"lg"}>LOGIN</Button>
+            <Button type="submit" size={"lg"}>
+              LOGIN
+            </Button>
           </div>
         </form>
       </div>

@@ -2,7 +2,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/auth/login";
 import Dashboard from "./pages/dashboard/dashboard/dashboard";
-import Product from "./pages/dashboard/product";
+import Product from "./pages/dashboard/product/product";
 import Layout from "./pages/dashboard/layout";
 import ProtectedRoute from "./middleware/ProtectedRoute";
 
