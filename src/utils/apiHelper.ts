@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const BASE_API = "https://kopi-kita-server.vercel.app";
-const BASE_API = "http://localhost:2890";
+const BASE_API = "https://kopi-kita-server.vercel.app";
+// const BASE_API = "http://localhost:2890";
 
 const apiBase = axios.create({
   baseURL: BASE_API,
